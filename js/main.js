@@ -87,36 +87,32 @@ var finances = [
     ['Feb-2017', 671099]
     ];
 
-    var total = (finances.length);
-    console.log (total);
-    
+var total = (finances.length);
+console.log ('Total Months: ' + total);
+    ///////////////////////////
+
+var netTotal = 0;
+
+for (var i = 0; i < finances.length; i++) {
+  netTotal += finances[i][1];
+}
+
+console.log('Total: £' + netTotal);
  
-    
+    /////////////////////////////////////////
 
+var changes = [];
 
+for (var i = 1; i < finances.length; i++) {
+  changes.push(finances[i][1] - finances[i - 1][1]);
+}
 
-  
-//   * The total number of months included in the dataset.
-// var total = (finances.length);
-// console.log (total);
+var averageChange = changes.reduce((a, b) => a + b, 0) / changes.length;
 
-// 86 Months
-  
-//   * The net total amount of Profit/Losses over the entire period.
-
-// netTotal = ;
-// console.log(netTotal)
+console.log('Average Change: £' + averageChange);
 
   
-//   * The average of the **changes** in Profit/Losses over the entire period.
-//     * You will need to track what the total change in profits are from month to month and then find the average.
-//     * (`Total/Number of months`)
 
-
-  
-//   * The greatest increase in profits (date and amount) over the entire period.
-  
-//   * The greatest decrease in losses (date and amount) over the entire period.
 
 
 
