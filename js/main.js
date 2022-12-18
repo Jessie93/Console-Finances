@@ -87,10 +87,21 @@ var finances = [
     ['Feb-2017', 671099]
     ];
 
+
+// Page Heading and Decoration
+console.log('Financial Analysis')
+console.log('______________________________')
+
+
+// The total number of months included in the dataset.
 var total = (finances.length);
 console.log ('Total Months: ' + total);
-    ///////////////////////////
 
+
+
+    /////////////////////////////////////////
+    
+// The net total amount of Profit/Losses over the entire period.
 var netTotal = 0;
 
 for (var i = 0; i < finances.length; i++) {
@@ -100,7 +111,7 @@ for (var i = 0; i < finances.length; i++) {
 console.log('Total: £' + netTotal);
  
     /////////////////////////////////////////
-
+// The average of the **changes** in Profit/Losses over the entire period.
 var changes = [];
 
 for (var i = 1; i < finances.length; i++) {
@@ -112,8 +123,36 @@ var averageChange = changes.reduce((a, b) => a + b, 0) / changes.length;
 console.log('Average Change: £' + averageChange);
 
   
+    /////////////////////////////////////////
+// The greatest increase and decrease in profits (date and amount) over the entire period.
+var Increase = -40000000;
+var IncreaseDate = '';
+var Decrease = 40000000;
+var DecreaseDate = '';
+
+for (var i = 1; i < finances.length; i++) {
+  var date = finances[i][0];
+  var profits = finances[i][1];
+  var prevProfits = finances[i - 1][1];
+  var increase = profits - prevProfits;
+
+  if (increase > Increase) {
+    Increase = increase;
+    IncreaseDate = date;
+  }
+
+  if (increase < Decrease) {
+    Decrease = increase;
+    DecreaseDate = date;
+  }
+}
+
+// increase outcome
+console.log('Greatest increase in Profits: ' + IncreaseDate + ' (£' + Increase + ')');
 
 
+// Decrease outcome
+console.log('Greatest Decrease in Profits: ' + DecreaseDate + ' (£' + Decrease + ')');
 
 
 
