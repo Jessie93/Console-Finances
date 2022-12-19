@@ -102,6 +102,8 @@ console.log ('Total Months: ' + total);
     /////////////////////////////////////////
     
 // The net total amount of Profit/Losses over the entire period.
+// the loop should keep running as long as i is less than the length of finances
+// i++ increases the value of i by 1 after each loop
 var netTotal = 0;
 
 for (var i = 0; i < finances.length; i++) {
@@ -112,6 +114,8 @@ console.log('Total: £' + netTotal);
  
     /////////////////////////////////////////
 // The average of the **changes** in Profit/Losses over the entire period.
+// .push(finances[i][1] - finances[i - 1][1]) looks at the difference between the second element in the array and the one before before it.
+
 var changes = [];
 
 for (var i = 1; i < finances.length; i++) {
@@ -120,14 +124,18 @@ for (var i = 1; i < finances.length; i++) {
 
 var averageChange = changes.reduce((a, b) => a + b, 0) / changes.length;
 
+// Round averageChange to two decimal points
+averageChange = averageChange.toFixed(2);
+
 console.log('Average Change: £' + averageChange);
 
   
     /////////////////////////////////////////
 // The greatest increase and decrease in profits (date and amount) over the entire period.
-var Increase = -40000000;
+// increase in the numbers and the IncreaseDate is the dates
+var Increase = -Infinity;
 var IncreaseDate = '';
-var Decrease = 40000000;
+var Decrease = Infinity;
 var DecreaseDate = '';
 
 for (var i = 1; i < finances.length; i++) {
@@ -136,6 +144,8 @@ for (var i = 1; i < finances.length; i++) {
   var prevProfits = finances[i - 1][1];
   var increase = profits - prevProfits;
 
+  
+//   if statement - If increase is greater than increase then the number is updated. then the IncreaseDate(dates) is updated to Data
   if (increase > Increase) {
     Increase = increase;
     IncreaseDate = date;
