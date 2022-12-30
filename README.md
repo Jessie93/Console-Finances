@@ -25,7 +25,7 @@ The following image shows the console log:
 
 ## Deployed Page
 Link to the deployed site
-https://jessie93.github.io/horiseon-code-refactor/
+https://jessie93.github.io/Console-Finances/
 
 
 ## License 
